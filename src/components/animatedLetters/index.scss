@@ -1,0 +1,24 @@
+.text-animate {
+  display: inline-block;
+  opacity: 0;
+  animation: bounceIn 1s 1s; //duration and delay both set to 1s
+  animation-fill-mode: forwards; //to stay visible
+  min-width: 10px; //so that the letters dont jump around
+}
+
+.text-animate-hover {
+  min-width: 10px;
+  display: inline-block;
+  animation-fill-mode: both;
+  &:hover {
+    animation: rubberBand 1s;
+    color: #ffd700;
+  }
+}
+
+//add a delay to each index so that the letters appear one after the other
+@for $i from 1 through 35 {
+  .text-animate._#{$i} {
+    animation-delay: #{calc($i / 10)}s; //adding animation delay
+  }
+}
